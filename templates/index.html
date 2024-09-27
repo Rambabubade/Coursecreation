@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abhi the bot</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    :root {
+      --text-color: #E3E3E3;
+      --subheading-color: #828282;
+      --placeholder-color: #A6A6A6;
+      --primary-color: #242424;
+      --secondary-color: #383838;
+      --secondary-hover-color: #444;
+    }
+
+    .light_mode {
+      --text-color: #222;
+      --subheading-color: #A0A0A0;
+      --placeholder-color: #6C6C6C;
+      --primary-color: #FFF;
+      --secondary-color: #E9EEF6;
+      --secondary-hover-color: #DBE1EA;
+    }
+
+    body {
+      background: var(--primary-color);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .header {
+      margin-top: 6vh;
+      text-align: center;
+    }
+
+    .header :where(.title, .subtitle) {
+      color: var(--text-color);
+      font-weight: 500;
+      line-height: 4rem;
+    }
+
+    .header .title {
+      width: fit-content;
+      font-size: 3rem;
+      background-clip: text;
+      background: linear-gradient(to right, #4285f4, #d96570);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .header .subtitle {
+      font-size: 2.6rem;
+      color: var(--subheading-color);
+    }
+
+    .typing-area {
+      margin-top: 2rem;
+      width: 100%;
+      max-width: 980px;
+    }
+
+    .input-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .typing-input {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid var(--placeholder-color);
+      border-radius: 5px;
+      background: var(--secondary-color);
+      color: var(--text-color);
+    }
+
+    .submit-button {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 5px;
+      background: #4285f4;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin-left: 10px;
+    }
+
+    .submit-button:hover {
+      background: #d96570;
+    }
+
+    .result-container {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 3rem;
+      max-width: 980px;
+      width: 100%;
+    }
+
+    .text-card {
+      background: rgba(255, 255, 255, 0.1); /* Glass effect */
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 2rem;
+      color: var(--text-color);
+      width: 48%;
+      text-align: justify;
+    }
+
+    .video-container {
+      width: 48%;
+      text-align: center;
+    }
+
+    video {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+  </style>
+</head>
+<body>
+  <header class="header">
+    <h1 class="title">Hello, there</h1>
+    <p class="subtitle">How can I help you today?</p>
+  </header>
+
+  <div class="typing-area">
+    <form action="#" method="POST" class="typing-form">
+      <div class="input-wrapper">
+        <input type="text" name="question" placeholder="Enter a prompt here" class="typing-input" required />
+        <button type="submit" class="submit-button">Submit</button>
+      </div>
+    </form>
+  </div>
+
+  {% if generated_text %}
+    <div class="result-container">
+      <div class="text-card">
+        <h4>Generated Text:</h4>
+        <p>{{ generated_text }}</p>
+      </div>
+      <div class="video-container">
+        <h4>Generated Video:</h4>
+        <video controls>
+          <source src="{{ video_path }}" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+  {% endif %}
+
+  <script>
+    const typingForm = document.querySelector(".typing-form");
+    // Other scripts as needed
+  </script>
+</body>
+</html>
